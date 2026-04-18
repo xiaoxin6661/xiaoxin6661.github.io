@@ -1,0 +1,1490 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>王佳欣 - 个人简历</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1D1D1F',
+                        secondary: '#9d4edd',
+                        accent: '#ff006e',
+                        light: '#FFFFFF',
+                        dark: '#1D1D1F',
+                        'text-muted': '#6E6E73',
+                        'glass-bg': 'rgba(255, 255, 255, 0.8)',
+                        'soft-blue': '#E0E7FF',
+                        'soft-pink': '#FCE7F3',
+                        'soft-purple': '#F3E8FF',
+                    },
+                    fontFamily: {
+                        sans: ['-apple-system', 'BlinkMacSystemFont', 'SF Pro Display', 'Inter', 'Noto Sans SC', 'sans-serif'],
+                    },
+                },
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #FFFFFF;
+            color: #1D1D1F;
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', 'Noto Sans SC', sans-serif;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .project-card {
+            width: 100%;
+        }
+
+        .expandable-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+
+        .expandable-content.expanded {
+            max-height: 5000px;
+        }
+
+        .nav-link {
+            position: relative;
+            transition: all 0.3s ease;
+            color: #1D1D1F;
+        }
+
+        .nav-link:hover {
+            color: #6E6E73;
+        }
+
+        .nav-link.active {
+            color: #1D1D1F;
+        }
+
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #1D1D1F;
+        }
+
+        .btn-primary {
+            background: #F5F5F7;
+            color: #1D1D1F;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background: #F8F8FA;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .btn-outline {
+            background: #F5F5F7;
+            border: 1px solid #F5F5F7;
+            color: #1D1D1F;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline:hover {
+            background: #F8F8FA;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .timeline-line {
+            position: absolute;
+            left: 7px;
+            top: 24px;
+            bottom: 0;
+            width: 2px;
+            background: #E5E5E5;
+        }
+
+        .skill-tag {
+            background: #F5F5F7;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            color: #6E6E73;
+        }
+
+        /* 多色柔和晕染渐变背景 */
+        .gradient-bg {
+            position: absolute;
+            z-index: -1;
+            opacity: 0.45;
+            filter: blur(80px);
+        }
+
+        .gradient-bg-1 {
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(180, 200, 255, 1) 0%, rgba(180, 200, 255, 0) 70%);
+            top: 10%;
+            left: 10%;
+        }
+
+        .gradient-bg-2 {
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255, 200, 220, 1) 0%, rgba(255, 200, 220, 0) 70%);
+            top: 20%;
+            right: 15%;
+        }
+
+        .gradient-bg-3 {
+            width: 550px;
+            height: 550px;
+            background: radial-gradient(circle, rgba(220, 200, 255, 1) 0%, rgba(220, 200, 255, 0) 70%);
+            bottom: 20%;
+            left: 30%;
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <header class="fixed top-0 left-0 w-full z-50 bg-white/90 backdrop-blur-md border-b border-gray-100">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#home" class="text-xl font-semibold">王佳欣</a>
+            <nav class="hidden md:flex items-center gap-8">
+                <a href="#about" class="nav-link text-sm">关于</a>
+                <a href="#internship" class="nav-link text-sm">实习经历</a>
+                <a href="#projects" class="nav-link text-sm">项目</a>
+                <a href="#education" class="nav-link text-sm">教育</a>
+                <a href="#contact" class="nav-link text-sm">联系</a>
+                <div class="flex items-center gap-3 pl-4 border-l border-gray-200">
+                    <a href="#" class="text-sm text-text-muted hover:text-primary">EN</a>
+                    <span class="text-text-muted">🌙</span>
+                </div>
+            </nav>
+            <button class="md:hidden text-2xl">☰</button>
+        </div>
+    </header>
+
+    <!-- 首页 -->
+    <section id="home" class="min-h-screen flex flex-col items-center justify-center relative pt-20">
+        <!-- 多色柔和晕染渐变背景 -->
+        <div class="gradient-bg gradient-bg-1"></div>
+        <div class="gradient-bg gradient-bg-2"></div>
+        <div class="gradient-bg gradient-bg-3"></div>
+
+        <div class="container mx-auto px-6 z-10 text-center">
+            <div class="inline-flex items-center gap-2 bg-green-50 text-green-600 px-4 py-2 rounded-full text-sm mb-8">
+                <div class="w-2 h-2 rounded-full bg-green-500"></div>
+                欢迎来到我的个人主页
+            </div>
+            <h1 class="text-5xl md:text-7xl font-bold mb-6">王佳欣</h1>
+            <p class="text-xl md:text-2xl text-text-muted mb-8">产品与新媒体运营方向 · 个人档案</p>
+            <p class="text-text-muted mb-12 max-w-2xl mx-auto">
+                我是一名网络与新媒体专业的本科学生，专注于产品运营和新媒体运营，具有丰富的实习经验和项目经历。
+            </p>
+            <div class="flex flex-wrap justify-center gap-4 mb-16">
+                <a href="#about" class="px-8 py-3 btn-primary rounded-full transition-all flex items-center gap-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                    </svg>
+                    查看简历
+                </a>
+                <a href="#contact" class="px-8 py-3 btn-outline rounded-full transition-all flex items-center gap-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                    </svg>
+                    联系我
+                </a>
+            </div>
+            <div class="flex flex-col items-center">
+                <span class="text-sm text-text-muted mb-2">下滑</span>
+                <svg class="w-6 h-6 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- 关于我 -->
+    <section id="about" class="py-24 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="flex justify-between items-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold reveal">关于我</h2>
+            </div>
+
+            <!-- 数据卡片区 -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12 reveal">
+                <div class="bg-white rounded-2xl p-6 card-hover cursor-pointer" onclick="scrollToSection('education')">
+                    <div class="w-12 h-12 flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"></path>
+                        </svg>
+                    </div>
+                    <p class="text-3xl font-bold mb-1">1</p>
+                    <p class="text-text-muted text-sm">本科学位</p>
+                    <p class="text-text-muted text-xs mt-1">网络与新媒体</p>
+                </div>
+
+                <div class="bg-white rounded-2xl p-6 card-hover cursor-pointer" onclick="scrollToSection('education')">
+                    <div class="w-12 h-12 flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path>
+                        </svg>
+                    </div>
+                    <p class="text-3xl font-bold mb-1">4</p>
+                    <p class="text-text-muted text-sm">奖学金/奖项</p>
+                    <p class="text-text-muted text-xs mt-1">三次奖学金+一次竞赛</p>
+                </div>
+
+                <div class="bg-white rounded-2xl p-6 card-hover cursor-pointer" onclick="scrollToSection('internship')">
+                    <div class="w-12 h-12 flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                        </svg>
+                    </div>
+                    <p class="text-3xl font-bold mb-1">3</p>
+                    <p class="text-text-muted text-sm">实习经历</p>
+                    <p class="text-text-muted text-xs mt-1">百度&大淘体育&吉林广电</p>
+                </div>
+
+                <div class="bg-white rounded-2xl p-6 card-hover cursor-pointer" onclick="scrollToSection('projects')">
+                    <div class="w-12 h-12 flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
+                        </svg>
+                    </div>
+                    <p class="text-3xl font-bold mb-1">4</p>
+                    <p class="text-text-muted text-sm">核心项目</p>
+                    <p class="text-text-muted text-xs mt-1">AI IP&小程序&工具&摄影</p>
+                </div>
+            </div>
+
+            <!-- 图文介绍区 -->
+            <div class="flex flex-col md:flex-row gap-8 items-center reveal">
+                <div class="flex-1">
+                    <h3 class="text-xl font-semibold mb-4">个人介绍</h3>
+                    <p class="text-text-muted leading-relaxed">
+                        我是王佳欣，长春理工大学网络与新媒体专业本科生，聚焦新媒体运营、产品运营与 AI 工具应用方向。拥有多段运营实习经历，熟悉内容策划、社群运营与数据分析；<br>
+                        同时擅长以 AI 工具提效，独立开发上线小程序、配置自动化发布工具优化运营流程，致力于以创意 + 技术打造有价值的数字内容与产品。
+                    </p>
+                </div>
+                <div class="flex flex-col items-center gap-4 w-full md:w-1/3">
+                    <div class="w-48 h-48 rounded-full overflow-hidden border-4 border-white shadow-lg">
+                        <img src="照片1.jpg" alt="个人照片" class="w-full h-full object-cover">
+                    </div>
+                    <div class="w-40 h-40 rounded-full overflow-hidden border-4 border-white shadow-lg">
+                        <img src="照片2.jpg" alt="个人照片" class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 实习经历 -->
+    <section id="internship" class="py-24">
+        <div class="container mx-auto px-6">
+            <div class="flex justify-between items-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold reveal">实习经历</h2>
+                <a href="#" class="text-text-muted text-sm flex items-center gap-1 hover:text-primary transition-colors">
+                    查看全部
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </a>
+            </div>
+
+            <div class="space-y-8 max-w-4xl">
+                <!-- 百度实习 -->
+                <div class="relative pl-8 reveal">
+                    <div class="timeline-line"></div>
+                    <div class="absolute left-0 top-1 w-4 h-4 rounded-full bg-primary border-4 border-white"></div>
+                    <div class="bg-white rounded-2xl p-6 card-hover">
+                        <div class="flex flex-col md:flex-row md:items-start justify-between gap-4 mb-4">
+                            <div>
+                                <h3 class="text-xl font-semibold mb-1">百度 · 安全运营实习生</h3>
+                                <p class="text-text-muted text-sm">协助维护"百度安全响应中心"服务号，完成专业内容打磨、封面设计对接及审核推送全流程SOP</p>
+                            </div>
+                            <span class="text-text-muted text-sm whitespace-nowrap">2025.07 – 2025.09</span>
+                        </div>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="skill-tag">运营</span>
+                            <span class="skill-tag">AI工具</span>
+                            <span class="skill-tag">内容策划</span>
+                        </div>
+                        <button onclick="toggleExpand('baidu-details')" class="text-sm text-text-muted flex items-center gap-1 hover:text-primary transition-colors">
+                            详情
+                            <svg id="baidu-arrow" class="w-4 h-4 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div id="baidu-details" class="expandable-content">
+                            <div class="pt-4 mt-4 border-t border-gray-100 space-y-4">
+                                <div class="flex items-start gap-3">
+                                    <div class="w-1.5 h-1.5 rounded-full bg-primary mt-2"></div>
+                                    <div>
+                                        <h4 class="font-medium mb-1">内容生产</h4>
+                                        <p class="text-text-muted text-sm">使用AI工具创作安全科普文案，周稳定产出2篇，周均访问量6000+</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <div class="w-1.5 h-1.5 rounded-full bg-primary mt-2"></div>
+                                    <div>
+                                        <h4 class="font-medium mb-1">视觉制作</h4>
+                                        <p class="text-text-muted text-sm">配合设计团队产出国潮/动漫IP视觉素材，统一品牌风格</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <div class="w-1.5 h-1.5 rounded-full bg-primary mt-2"></div>
+                                    <div>
+                                        <h4 class="font-medium mb-1">数据复盘</h4>
+                                        <p class="text-text-muted text-sm">跟踪阅读与转发数据，优化标题排版，提升用户留存</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 大淘体育实习 -->
+                <div class="relative pl-8 reveal">
+                    <div class="timeline-line"></div>
+                    <div class="absolute left-0 top-1 w-4 h-4 rounded-full bg-primary border-4 border-white"></div>
+                    <div class="bg-white rounded-2xl p-6 card-hover">
+                        <div class="flex flex-col md:flex-row md:items-start justify-between gap-4 mb-4">
+                            <div>
+                                <h3 class="text-xl font-semibold mb-1">大淘体育 · 新媒体运营实习生</h3>
+                                <p class="text-text-muted text-sm">负责抖音账号从0到1冷启动，搭建马拉松赛事内容矩阵，提升账号播放量与粉丝活跃度</p>
+                            </div>
+                            <span class="text-text-muted text-sm whitespace-nowrap">2025.04 – 2025.06</span>
+                        </div>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="skill-tag">短视频</span>
+                            <span class="skill-tag">社群运营</span>
+                            <span class="skill-tag">活动执行</span>
+                        </div>
+                        <button onclick="toggleExpand('tao-details')" class="text-sm text-text-muted flex items-center gap-1 hover:text-primary transition-colors">
+                            详情
+                            <svg id="tao-arrow" class="w-4 h-4 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div id="tao-details" class="expandable-content">
+                            <div class="pt-4 mt-4 border-t border-gray-100 space-y-4">
+                                <div class="flex items-start gap-3">
+                                    <div class="w-1.5 h-1.5 rounded-full bg-primary mt-2"></div>
+                                    <div>
+                                        <h4 class="font-medium mb-1">短视频制作</h4>
+                                        <p class="text-text-muted text-sm">独立剪辑体育短视频，日均产出3条，提升账号播放量</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <div class="w-1.5 h-1.5 rounded-full bg-primary mt-2"></div>
+                                    <div>
+                                        <h4 class="font-medium mb-1">社群运营</h4>
+                                        <p class="text-text-muted text-sm">维护粉丝社群，日常互动与活动通知，提升活跃度</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <div class="w-1.5 h-1.5 rounded-full bg-primary mt-2"></div>
+                                    <div>
+                                        <h4 class="font-medium mb-1">活动执行</h4>
+                                        <p class="text-text-muted text-sm">协助线上赛事宣传、物料制作与用户报名统计</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <div class="w-1.5 h-1.5 rounded-full bg-primary mt-2"></div>
+                                    <div>
+                                        <h4 class="font-medium mb-1">新媒体全流程制作</h4>
+                                        <p class="text-text-muted text-sm">独立负责大淘体育官方抖音号、公众号全流程制作（拍摄、文案、排版）</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <div class="w-1.5 h-1.5 rounded-full bg-primary mt-2"></div>
+                                    <div>
+                                        <h4 class="font-medium mb-1">项目数据</h4>
+                                        <p class="text-text-muted text-sm">发布视频8个 | 粉丝1000＋ | 单月最高转化营业额1W+</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 吉林广电实习 -->
+                <div class="relative pl-8 reveal">
+                    <div class="absolute left-0 top-1 w-4 h-4 rounded-full bg-primary border-4 border-white"></div>
+                    <div class="bg-white rounded-2xl p-6 card-hover">
+                        <div class="flex flex-col md:flex-row md:items-start justify-between gap-4 mb-4">
+                            <div>
+                                <h3 class="text-xl font-semibold mb-1">吉林广电 · 新媒体运营实习生</h3>
+                                <p class="text-text-muted text-sm">参与广播电视节目新媒体平台运营，负责内容策划、视频剪辑与多平台分发</p>
+                            </div>
+                            <span class="text-text-muted text-sm whitespace-nowrap">2024.07</span>
+                        </div>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="skill-tag">视频剪辑</span>
+                            <span class="skill-tag">内容运营</span>
+                            <span class="skill-tag">多平台分发</span>
+                        </div>
+                        <button onclick="toggleExpand('jilin-details')" class="text-sm text-text-muted flex items-center gap-1 hover:text-primary transition-colors">
+                            详情
+                            <svg id="jilin-arrow" class="w-4 h-4 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div id="jilin-details" class="expandable-content">
+                            <div class="pt-4 mt-4 border-t border-gray-100 space-y-4">
+                                <div class="flex items-start gap-3">
+                                    <div class="w-1.5 h-1.5 rounded-full bg-primary mt-2"></div>
+                                    <div>
+                                        <h4 class="font-medium mb-1">视频剪辑</h4>
+                                        <p class="text-text-muted text-sm">完成素材粗剪、精剪、字幕添加、音效调整，注重节奏把控，累计完成5条视频剪辑</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <div class="w-1.5 h-1.5 rounded-full bg-primary mt-2"></div>
+                                    <div>
+                                        <h4 class="font-medium mb-1">多平台适配</h4>
+                                        <p class="text-text-muted text-sm">制作横版、竖版等不同版本，优化封面和标题适配多平台发布</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <div class="w-1.5 h-1.5 rounded-full bg-primary mt-2"></div>
+                                    <div>
+                                        <h4 class="font-medium mb-1">技能提升</h4>
+                                        <p class="text-text-muted text-sm">学习不同文体写作技巧，协助采访整理、信息核实和稿件修改</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 精选项目 -->
+    <section id="projects" class="py-24 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="flex justify-between items-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold reveal">精选项目</h2>
+                <a href="#" class="text-text-muted text-sm flex items-center gap-1 hover:text-primary transition-colors">
+                    查看全部
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+
+                <!-- 项目二 -->
+                <div class="project-card bg-white/70 backdrop-blur-lg rounded-2xl overflow-hidden card-hover reveal border border-white/20 shadow-lg relative">
+                    <!-- 液态柔和光晕 -->
+                    <div class="absolute inset-0 bg-gradient-to-br from-blue-50/20 via-pink-50/20 to-purple-50/20 rounded-2xl pointer-events-none"></div>
+                    <!-- 项目预览图区域 -->
+                    <div class="aspect-video relative z-10">
+                        <img src="小窝.jpg" alt="Suddly Spot 小窝" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6 relative z-10">
+                        <div class="flex items-start justify-between mb-3">
+                            <h3 class="text-lg font-semibold">Suddly Spot 小窝</h3>
+                            <svg class="w-5 h-5 text-text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                            </svg>
+                        </div>
+                        <p class="text-text-muted text-sm mb-4">使用 Vibe Coding 形式开发的情绪记录小程序已上线，完成全界面 UI/UX 设计，打造莫兰迪极简治愈风格。</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="skill-tag">小程序</span>
+                            <span class="skill-tag">UI设计</span>
+                            <span class="skill-tag">产品</span>
+                            <span class="skill-tag">+1</span>
+                        </div>
+                        <button onclick="toggleProjectExpand('project2-details')" class="text-sm text-primary flex items-center gap-1 hover:underline transition-colors">
+                            查看详情
+                            <svg id="project2-arrow" class="w-4 h-4 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div id="project2-details" class="expandable-content border-t border-gray-100">
+                        <div class="p-6">
+
+                            
+                            <!-- 产品界面预览 -->
+                            <h3 class="text-xl font-semibold mb-3">产品界面预览</h3>
+                            <div class="w-16 h-1 bg-gray-200 mb-4"></div>
+                            
+                            <!-- 小程序页面画廊 -->
+                            <div class="mb-8">
+                                <div class="relative overflow-hidden rounded-2xl">
+                                    <div id="miniprogram-gallery" class="flex transition-transform duration-300 ease-out">
+                                        <!-- 卡片1-15 -->
+                                        <div class="gallery-card flex-shrink-0 w-full md:w-1/3 px-2">
+                                            <div class="bg-white/70 backdrop-blur-lg rounded-2xl p-3 border border-white/20 shadow-lg card-hover">
+                                                <div class="aspect-[9/16] bg-gray-100 rounded-xl overflow-hidden">
+                                                    <img src="01.jpg" alt="小窝首页" class="w-full h-full object-cover">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="gallery-card flex-shrink-0 w-full md:w-1/3 px-2">
+                                            <div class="bg-white/70 backdrop-blur-lg rounded-2xl p-3 border border-white/20 shadow-lg card-hover">
+                                                <div class="aspect-[9/16] bg-gray-100 rounded-xl overflow-hidden">
+                                                    <img src="02.jpg" alt="心情天气选择" class="w-full h-full object-cover">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="gallery-card flex-shrink-0 w-full md:w-1/3 px-2">
+                                            <div class="bg-white/70 backdrop-blur-lg rounded-2xl p-3 border border-white/20 shadow-lg card-hover">
+                                                <div class="aspect-[9/16] bg-gray-100 rounded-xl overflow-hidden">
+                                                    <img src="03.jpg" alt="发生了什么事" class="w-full h-full object-cover">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="gallery-card flex-shrink-0 w-full md:w-1/3 px-2">
+                                            <div class="bg-white/70 backdrop-blur-lg rounded-2xl p-3 border border-white/20 shadow-lg card-hover">
+                                                <div class="aspect-[9/16] bg-gray-100 rounded-xl overflow-hidden">
+                                                    <img src="04.jpg" alt="情绪与强度" class="w-full h-full object-cover">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="gallery-card flex-shrink-0 w-full md:w-1/3 px-2">
+                                            <div class="bg-white/70 backdrop-blur-lg rounded-2xl p-3 border border-white/20 shadow-lg card-hover">
+                                                <div class="aspect-[9/16] bg-gray-100 rounded-xl overflow-hidden">
+                                                    <img src="05.jpg" alt="情绪需求" class="w-full h-full object-cover">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="gallery-card flex-shrink-0 w-full md:w-1/3 px-2">
+                                            <div class="bg-white/70 backdrop-blur-lg rounded-2xl p-3 border border-white/20 shadow-lg card-hover">
+                                                <div class="aspect-[9/16] bg-gray-100 rounded-xl overflow-hidden">
+                                                    <img src="06.jpg" alt="小程序页面 6" class="w-full h-full object-cover">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="gallery-card flex-shrink-0 w-full md:w-1/3 px-2">
+                                            <div class="bg-white/70 backdrop-blur-lg rounded-2xl p-3 border border-white/20 shadow-lg card-hover">
+                                                <div class="aspect-[9/16] bg-gray-100 rounded-xl overflow-hidden">
+                                                    <img src="07.jpg" alt="小程序页面 7" class="w-full h-full object-cover">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="gallery-card flex-shrink-0 w-full md:w-1/3 px-2">
+                                            <div class="bg-white/70 backdrop-blur-lg rounded-2xl p-3 border border-white/20 shadow-lg card-hover">
+                                                <div class="aspect-[9/16] bg-gray-100 rounded-xl overflow-hidden">
+                                                    <img src="08.jpg" alt="小程序页面 8" class="w-full h-full object-cover">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="gallery-card flex-shrink-0 w-full md:w-1/3 px-2">
+                                            <div class="bg-white/70 backdrop-blur-lg rounded-2xl p-3 border border-white/20 shadow-lg card-hover">
+                                                <div class="aspect-[9/16] bg-gray-100 rounded-xl overflow-hidden">
+                                                    <img src="09.jpg" alt="小程序页面 9" class="w-full h-full object-cover">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="gallery-card flex-shrink-0 w-full md:w-1/3 px-2">
+                                            <div class="bg-white/70 backdrop-blur-lg rounded-2xl p-3 border border-white/20 shadow-lg card-hover">
+                                                <div class="aspect-[9/16] bg-gray-100 rounded-xl overflow-hidden">
+                                                    <img src="10.jpg" alt="小程序页面 10" class="w-full h-full object-cover">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="gallery-card flex-shrink-0 w-full md:w-1/3 px-2">
+                                            <div class="bg-white/70 backdrop-blur-lg rounded-2xl p-3 border border-white/20 shadow-lg card-hover">
+                                                <div class="aspect-[9/16] bg-gray-100 rounded-xl overflow-hidden">
+                                                    <img src="111.jpg" alt="小程序页面 11" class="w-full h-full object-cover">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="gallery-card flex-shrink-0 w-full md:w-1/3 px-2">
+                                            <div class="bg-white/70 backdrop-blur-lg rounded-2xl p-3 border border-white/20 shadow-lg card-hover">
+                                                <div class="aspect-[9/16] bg-gray-100 rounded-xl overflow-hidden">
+                                                    <img src="112.jpg" alt="小程序页面 12" class="w-full h-full object-cover">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="gallery-card flex-shrink-0 w-full md:w-1/3 px-2">
+                                            <div class="bg-white/70 backdrop-blur-lg rounded-2xl p-3 border border-white/20 shadow-lg card-hover">
+                                                <div class="aspect-[9/16] bg-gray-100 rounded-xl overflow-hidden">
+                                                    <img src="13.jpg" alt="小程序页面 13" class="w-full h-full object-cover">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="gallery-card flex-shrink-0 w-full md:w-1/3 px-2">
+                                            <div class="bg-white/70 backdrop-blur-lg rounded-2xl p-3 border border-white/20 shadow-lg card-hover">
+                                                <div class="aspect-[9/16] bg-gray-100 rounded-xl overflow-hidden">
+                                                    <img src="14.jpg" alt="小程序页面 14" class="w-full h-full object-cover">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    
+                                    <!-- 左右箭头 -->
+                                    <button onclick="scrollGallery('miniprogram-gallery', -1)" class="absolute left-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/80 backdrop-blur-lg rounded-full shadow-lg flex items-center justify-center hover:bg-white transition-colors">
+                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                                        </svg>
+                                    </button>
+                                    <button onclick="scrollGallery('miniprogram-gallery', 1)" class="absolute right-2 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/80 backdrop-blur-lg rounded-full shadow-lg flex items-center justify-center hover:bg-white transition-colors">
+                                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                                
+                                <!-- 页码指示器 -->
+                                <div class="flex justify-center mt-4 gap-2" id="miniprogram-gallery-dots"></div>
+                                <p class="text-center text-text-muted text-sm mt-2" id="miniprogram-gallery-counter">1 / 15</p>
+                            </div>
+                            
+                            <!-- 项目复盘内容 -->
+                            <div class="space-y-8 mb-8">
+                                <!-- 需求洞察 -->
+                                <div>
+                                    <h3 class="text-xl font-semibold mb-3">需求洞察</h3>
+                                    <div class="w-16 h-1 bg-gray-200 mb-4"></div>
+                                    <p class="text-text-muted leading-relaxed">
+                                        针对年轻人情绪压抑难表达、日常记录门槛高、灵感易流失、缺乏行动落地的痛点，打造轻量化治愈心理产品，降低情绪表达成本，帮助用户完成自我觉察与正向成长。
+                                    </p>
+                                </div>
+                                
+                                <!-- 竞品分析 -->
+                                <div>
+                                    <h3 class="text-xl font-semibold mb-3">竞品分析</h3>
+                                    <div class="w-16 h-1 bg-gray-200 mb-4"></div>
+                                    <p class="text-text-muted leading-relaxed">
+                                        对标心光、小日常等同类产品，拆解用户留存、内容生态、激励机制差异，明确差异化运营定位，规划全场景记录与陪伴功能。
+                                    </p>
+                                </div>
+                                
+                                <!-- 功能迭代 -->
+                                <div>
+                                    <h3 class="text-xl font-semibold mb-3">功能迭代</h3>
+                                    <div class="w-16 h-1 bg-gray-200 mb-4"></div>
+                                    <p class="text-text-muted leading-relaxed">
+                                        搭建「情绪记录 - 灵感沉淀 - 小约定」运营闭环，优化交互与治愈文案，简化操作路径，用户周留存提升 <span class="text-primary font-semibold">12%</span>。
+                                    </p>
+                                </div>
+                                
+                                <!-- 数据分析 -->
+                                <div>
+                                    <h3 class="text-xl font-semibold mb-3">数据分析</h3>
+                                    <div class="w-16 h-1 bg-gray-200 mb-4"></div>
+                                    <p class="text-text-muted leading-relaxed">
+                                        追踪用户行为与核心转化数据，基于反馈持续迭代体验，灵感功能使用率达 <span class="text-primary font-semibold">42%</span>，有效提升用户粘性。
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <!-- 项目核心亮点/技术栈标签 -->
+                            <div class="flex flex-wrap gap-2 mb-6">
+                                <span class="skill-tag">小程序</span>
+                                <span class="skill-tag">UI设计</span>
+                                <span class="skill-tag">产品落地</span>
+                            </div>
+                            
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 项目三 -->
+                <div class="project-card bg-white/70 backdrop-blur-lg rounded-2xl overflow-hidden card-hover reveal border border-white/20 shadow-lg relative">
+                    <!-- 液态柔和光晕 -->
+                    <div class="absolute inset-0 bg-gradient-to-br from-blue-50/20 via-pink-50/20 to-purple-50/20 rounded-2xl pointer-events-none"></div>
+                    <!-- 项目预览图区域 -->
+                    <div class="aspect-video relative z-10">
+                        <img src="openclaw1.png" alt="OpenClaw 自动化发布" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6 relative z-10">
+                        <div class="flex items-start justify-between mb-3">
+                            <h3 class="text-lg font-semibold">OpenClaw 自动化发布</h3>
+                            <svg class="w-5 h-5 text-text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                            </svg>
+                        </div>
+                        <p class="text-text-muted text-sm mb-4">配置OpenClaw实现小红书内容自动发布，提升多平台运营效率约40%</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="skill-tag">自动化</span>
+                            <span class="skill-tag">小红书</span>
+                            <span class="skill-tag">效率工具</span>
+                            <span class="skill-tag">+1</span>
+                        </div>
+                        <button onclick="toggleProjectExpand('project3-details')" class="text-sm text-primary flex items-center gap-1 hover:underline transition-colors">
+                            查看详情
+                            <svg id="project3-arrow" class="w-4 h-4 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div id="project3-details" class="expandable-content border-t border-gray-100">
+                        <div class="p-6">
+                            <!-- 【A. 项目效果展示区】 -->
+                            <div class="mb-8">
+
+                                <!-- 小红书发帖成功截图 -->
+                                <div>
+                                    <img src="openclaw2(1).jpg" alt="小红书发帖成功截图" class="w-full max-w-full h-auto object-contain rounded-xl">
+                                </div>
+                            </div>
+                            
+                            <!-- 【B. 项目详情区】 -->
+                            <div class="mb-8">
+                                <h3 class="text-xl font-semibold mb-6">项目详情</h3>
+                                
+                                <!-- 痛点 -->
+                                <div class="mb-4">
+                                    <h4 class="text-lg font-medium mb-2">痛点</h4>
+                                    <p class="text-text-muted">多平台内容发布流程繁琐、手动操作重复度高、易遗漏，需要搭建自动化体系，降低运营成本，提升内容分发效率。</p>
+                                </div>
+                                
+                                <!-- 我的动作 -->
+                                <div class="mb-4">
+                                    <h4 class="text-lg font-medium mb-2">我的动作</h4>
+                                    <p class="text-text-muted">完成工具需求梳理与 PRD 撰写，明确自动化发布核心流程；配置 OpenClaw 搭建多平台自动发布体系，实现小红书内容一键分发；<a href="https://www.kdocs.cn/l/chArJ6cdobhq" target="_blank" class="text-primary hover:underline">撰写使用文档</a>，优化发布规则与流程。</p>
+                                </div>
+                                
+                                <!-- 结果 -->
+                                <div>
+                                    <h4 class="text-lg font-medium mb-2">结果</h4>
+                                    <p class="text-text-muted">实现多平台内容自动化发布，运营效率提升约 40%，大幅降低了手动发布的重复劳动成本，已投入日常稳定使用。</p>
+                                </div>
+                            </div>
+                            
+                            <!-- 项目核心亮点/技术栈标签 -->
+                            <div class="flex flex-wrap gap-2 mb-6">
+                                <span class="skill-tag">自动化</span>
+                                <span class="skill-tag">效率工具</span>
+                                <span class="skill-tag">全栈运营</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 项目四 - 摄影作品集 -->
+                <div class="project-card bg-white/70 backdrop-blur-lg rounded-2xl overflow-hidden card-hover reveal border border-white/20 shadow-lg relative">
+                    <!-- 液态柔和光晕 -->
+                    <div class="absolute inset-0 bg-gradient-to-br from-blue-50/20 via-pink-50/20 to-purple-50/20 rounded-2xl pointer-events-none"></div>
+                    <!-- 项目预览图区域 -->
+                    <div class="aspect-video bg-gray-100 flex items-center justify-center relative z-10">
+                        <img src="3(1).jpg" alt="摄影作品集" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6 relative z-10">
+                        <div class="flex items-start justify-between mb-3">
+                            <h3 class="text-lg font-semibold">摄影作品集</h3>
+                            <svg class="w-5 h-5 text-text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                            </svg>
+                        </div>
+                        <p class="text-text-muted text-sm mb-4">个人摄影作品集合，涵盖风景、人像、纪实等多种风格，展现视觉叙事能力</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="skill-tag">摄影</span>
+                            <span class="skill-tag">视觉艺术</span>
+                            <span class="skill-tag">作品集</span>
+                            <span class="skill-tag">+1</span>
+                        </div>
+                        <button onclick="toggleProjectExpand('project4-details')" class="text-sm text-primary flex items-center gap-1 hover:underline transition-colors">
+                            查看详情
+                            <svg id="project4-arrow" class="w-4 h-4 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div id="project4-details" class="expandable-content border-t border-gray-100">
+                        <div class="p-6">
+
+                            <!-- 项目详细介绍 -->
+                            <div class="mb-6 space-y-4">
+                                <p class="text-text-muted">整理个人摄影实践成果，涵盖风景、人像、纪实等多种拍摄风格，注重视觉叙事与情绪表达。</p>
+                                <p class="text-text-muted">个人职责：负责拍摄、后期修图与作品集排版，提升视觉审美与叙事能力。</p>
+                                <p class="text-text-muted">成果：形成完整的个人摄影视觉库，锻炼构图与光影把控能力。</p>
+                            </div>
+                            
+                            <!-- 项目核心亮点/技术栈标签 -->
+                            <div class="flex flex-wrap gap-2 mb-6">
+                                <span class="skill-tag">摄影</span>
+                                <span class="skill-tag">视觉艺术</span>
+                                <span class="skill-tag">作品集</span>
+                            </div>
+                            
+                            <!-- 人像摄影 -->
+                            <div class="mt-8">
+                                <p class="text-text-muted leading-relaxed mb-4">以光影与构图传递人物情绪，打造有温度的情绪人像，形成个人视觉叙事风格。</p>
+                                <h4 class="font-semibold mb-4 text-lg">人像摄影</h4>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <img src="4.jpg" alt="人像摄影" class="w-full h-40 object-cover rounded-xl">
+                                    <img src="5.jpg" alt="人像摄影" class="w-full h-40 object-cover rounded-xl">
+                                    <img src="11.jpg" alt="人像摄影" class="w-full h-40 object-cover rounded-xl">
+                                    <img src="12.jpg" alt="人像摄影" class="w-full h-40 object-cover rounded-xl">
+                                </div>
+                            </div>
+                            
+                            <!-- 赛事摄影 -->
+                            <div class="mt-8">
+                                <p class="text-text-muted leading-relaxed mb-4">动态抓拍体育赛事高光瞬间，定格竞技张力与热血氛围，传递运动的力量感。</p>
+                                <h4 class="font-semibold mb-4 text-lg">赛事摄影</h4>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <img src="体育1.jpg" alt="赛事摄影" class="w-full h-40 object-cover rounded-xl">
+                                    <img src="体育2.jpg" alt="赛事摄影" class="w-full h-40 object-cover rounded-xl">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 新增项目1：长春1m³微更新 -->
+                <div class="project-card bg-white/70 backdrop-blur-lg rounded-2xl overflow-hidden card-hover reveal border border-white/20 shadow-lg relative">
+                    <!-- 液态柔和光晕 -->
+                    <div class="absolute inset-0 bg-gradient-to-br from-blue-50/20 via-pink-50/20 to-purple-50/20 rounded-2xl pointer-events-none"></div>
+                    <!-- 项目预览图区域 -->
+                    <div class="aspect-video bg-gray-100 flex items-center justify-center relative z-10">
+                        <img src="长春文旅(1).png" alt="长春1m³微更新" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6 relative z-10">
+                        <div class="flex items-start justify-between mb-3">
+                            <h3 class="text-lg font-semibold">长春1m³微更新 | 文旅账号策划</h3>
+                            <svg class="w-5 h-5 text-text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                            </svg>
+                        </div>
+                        <p class="text-text-muted text-sm mb-4">全民共创文旅IP，搭建官民沟通桥梁</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="skill-tag">文旅</span>
+                            <span class="skill-tag">账号策划</span>
+                            <span class="skill-tag">IP打造</span>
+                            <span class="skill-tag">+1</span>
+                        </div>
+                        <button onclick="toggleProjectExpand('project5-details')" class="text-sm text-primary flex items-center gap-1 hover:underline transition-colors">
+                            查看详情
+                            <svg id="project5-arrow" class="w-4 h-4 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div id="project5-details" class="expandable-content border-t border-gray-100">
+                        <div class="p-6">
+                            <!-- 项目主视觉图 -->
+                            <div class="mb-6">
+                                <img src="长春文旅2.png" alt="长春1m³微更新" class="w-full h-auto object-contain rounded-xl">
+                            </div>
+                            
+                            <!-- 项目详细介绍 -->
+                            <div class="mb-6 space-y-6">
+                                <div>
+                                    <h4 class="font-semibold mb-2">核心策略</h4>
+                                    <p class="text-text-muted">打造全民共创、动态成长的文旅账号。<a href="https://www.kdocs.cn/l/cpYn6f1k7lOl" target="_blank" class="text-primary hover:underline">查看完整运营报告</a></p>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold mb-2">问题洞察</h4>
+                                    <p class="text-text-muted">抓取网络声音，指出长春文旅问题：宣传不到位掩盖城市魅力。</p>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold mb-2">账号定位与IP</h4>
+                                    <p class="text-text-muted">定位：官方与民众的沟通桥梁，聚焦“聆听建议并展示整改”。</p>
+                                    <p class="text-text-muted">IP形象：“重启官”，亲切负责，第一人称讲述整改故事。</p>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold mb-2">运营模式</h4>
+                                    <p class="text-text-muted">全民共创：发动市民、大学生、游客，建言献策与内容共创。</p>
+                                    <p class="text-text-muted">00后上岗：大学生团队运营，注入年轻视角，确保内容出圈。</p>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold mb-2">个人价值</h4>
+                                    <p class="text-text-muted">贡献：用户调研与痛点分析，构思“全民共创”模式与“重启官”IP，转型为有温度的城市互动。</p>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold mb-2">项目成果</h4>
+                                    <p class="text-text-muted"><span class="text-primary font-semibold">账号价值：</span>长期性、打造长春文化ip、弥补性、扩展性、多元性、创新性、独特性</p>
+                                </div>
+                            </div>
+                            
+                            <!-- 项目核心亮点/技术栈标签 -->
+                            <div class="flex flex-wrap gap-2 mb-6">
+                                <span class="skill-tag">文旅策划</span>
+                                <span class="skill-tag">IP打造</span>
+                                <span class="skill-tag">内容运营</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 新增项目2：大淘体育公众号运营 -->
+                <div class="project-card bg-white/70 backdrop-blur-lg rounded-2xl overflow-hidden card-hover reveal border border-white/20 shadow-lg relative">
+                    <!-- 液态柔和光晕 -->
+                    <div class="absolute inset-0 bg-gradient-to-br from-blue-50/20 via-pink-50/20 to-purple-50/20 rounded-2xl pointer-events-none"></div>
+                    <!-- 项目预览图区域 -->
+                    <div class="aspect-video bg-gray-100 flex items-center justify-center relative z-10">
+                        <img src="公众号(1).png" alt="大淘体育公众号运营" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6 relative z-10">
+                        <div class="flex items-start justify-between mb-3">
+                            <h3 class="text-lg font-semibold">大淘体育公众号运营</h3>
+                            <svg class="w-5 h-5 text-text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                            </svg>
+                        </div>
+                        <p class="text-text-muted text-sm mb-4">独自完成从图片拍摄，文案撰写到排版的全部工作</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="skill-tag">公众号运营</span>
+                            <span class="skill-tag">内容创作</span>
+                            <span class="skill-tag">排版设计</span>
+                            <span class="skill-tag">+1</span>
+                        </div>
+                        <button onclick="toggleProjectExpand('project9-details')" class="text-sm text-primary flex items-center gap-1 hover:underline transition-colors">
+                            查看详情
+                            <svg id="project9-arrow" class="w-4 h-4 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div id="project9-details" class="expandable-content border-t border-gray-100">
+                        <div class="p-6">
+                            <!-- 项目主视觉图 -->
+                            <div class="mb-6 flex justify-center">
+                                <img src="公众号2.png" alt="大淘体育公众号运营" class="max-w-full h-auto object-contain rounded-xl">
+                            </div>
+                            
+                            <!-- 项目详细介绍 -->
+                            <div class="mb-6 space-y-6">
+                                <div>
+                                    <h4 class="font-semibold mb-2">工作内容</h4>
+                                    <p class="text-text-muted">独自完成从图片拍摄，文案撰写到排版的全部工作，将作品发布到大淘体育公众号。</p>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold mb-2">运营成果展示</h4>
+                                    <p class="text-text-muted">展示节假日、节气朋友圈图片设计案例。</p>
+                                    <p class="text-text-muted">展示部分公众号页面截图（如冠军引领、匠心筹备、大淘热点等专题）。</p>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold mb-2">数据与链接</h4>
+                                    <p class="text-text-muted">公众号链接： <a href="https://mp.weixin.qq.com/s/E6YpPW3soCRgg6dx16TRXQ" class="text-primary hover:underline" target="_blank">https://mp.weixin.qq.com/s/E6YpPW3soCRgg6dx16TRXQ</a></p>
+                                    <p class="text-text-muted">个人价值：全流程负责，提升账号内容质量与粉丝粘性。</p>
+                                </div>
+                            </div>
+                            
+                            <!-- 项目核心亮点/技术栈标签 -->
+                            <div class="flex flex-wrap gap-2 mb-6">
+                                <span class="skill-tag">公众号运营</span>
+                                <span class="skill-tag">内容创作</span>
+                                <span class="skill-tag">排版设计</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 新增项目3：奶龙长春首秀 -->
+                <div class="project-card bg-white/70 backdrop-blur-lg rounded-2xl overflow-hidden card-hover reveal border border-white/20 shadow-lg relative">
+                    <!-- 液态柔和光晕 -->
+                    <div class="absolute inset-0 bg-gradient-to-br from-blue-50/20 via-pink-50/20 to-purple-50/20 rounded-2xl pointer-events-none"></div>
+                    <!-- 项目预览图区域 -->
+                    <div class="aspect-video bg-gray-100 flex items-center justify-center relative z-10">
+                        <img src="樱花巷里(1).png" alt="奶龙长春首秀" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6 relative z-10">
+                        <div class="flex items-start justify-between mb-3">
+                            <h3 class="text-lg font-semibold">奶龙长春首秀 | 文旅活动全案</h3>
+                            <svg class="w-5 h-5 text-text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                            </svg>
+                        </div>
+                        <p class="text-text-muted text-sm mb-4">网红IP落地，活动热搜第6，互动量10万+</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="skill-tag">活动策划</span>
+                            <span class="skill-tag">网红IP</span>
+                            <span class="skill-tag">文旅</span>
+                            <span class="skill-tag">+1</span>
+                        </div>
+                        <button onclick="toggleProjectExpand('project6-details')" class="text-sm text-primary flex items-center gap-1 hover:underline transition-colors">
+                            查看详情
+                            <svg id="project6-arrow" class="w-4 h-4 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div id="project6-details" class="expandable-content border-t border-gray-100">
+                        <div class="p-6">
+                            <!-- 项目主视觉图 -->
+                            <div class="mb-6 flex justify-center">
+                                <img src="樱花巷里2(1)(1).png" alt="奶龙长春首秀活动现场" class="max-w-full h-auto object-contain rounded-xl">
+                            </div>
+                            
+                            <!-- 项目详细介绍 -->
+                            <div class="mb-6 space-y-6">
+                                <div>
+                                    <h4 class="font-semibold mb-2">项目概述</h4>
+                                    <p class="text-text-muted">完整跟进并参与奶龙长春首秀及樱花巷里烟花大赏项目的全流程策划执行，包括前期策划、互动环节设计、现场拍摄、流程把控及后期宣传推广等。</p>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold mb-2">核心策略</h4>
+                                    <p class="text-text-muted">以“网红IP奶龙首秀”为爆点，结合烟花、音乐、市集打造场景，引关注。</p>
+                                    <p class="text-text-muted">传播强化“长春樱花巷”地标认知。</p>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold mb-2">关键执行</h4>
+                                    <p class="text-text-muted">1. 内容策划：提炼亮点，构建打卡动线。</p>
+                                    <p class="text-text-muted">2. 全流程支持：统一内容质感与节奏。</p>
+                                    <p class="text-text-muted">3. 数据复盘：输出报告，提炼模型。</p>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold mb-2">项目成果</h4>
+                                    <p class="text-text-muted">活动相关话题登上本地<span class="text-primary font-semibold">热搜榜6位</span>。</p>
+                                    <p class="text-text-muted">内容累计<span class="text-primary font-semibold">互动量10万+</span>，为后续文旅活动提供数据参考。</p>
+                                </div>
+                            </div>
+                            
+                            <!-- 项目核心亮点/技术栈标签 -->
+                            <div class="flex flex-wrap gap-2 mb-6">
+                                <span class="skill-tag">活动策划</span>
+                                <span class="skill-tag">网红IP</span>
+                                <span class="skill-tag">文旅营销</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+            </div>
+
+            <!-- 运营数据模块 -->
+            <div class="mt-16 reveal">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">个人抖音账号运营数据</h2>
+                <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
+                    <div class="bg-white/70 backdrop-blur-lg rounded-2xl p-4 card-hover border border-white/20 shadow-lg">
+                        <div class="text-2xl font-bold mb-1 text-primary">100</div>
+                        <p class="text-text-muted text-sm">累计发布视频</p>
+                    </div>
+                    <div class="bg-white/70 backdrop-blur-lg rounded-2xl p-4 card-hover border border-white/20 shadow-lg">
+                        <div class="text-2xl font-bold mb-1 text-primary">1900+</div>
+                        <p class="text-text-muted text-sm">粉丝</p>
+                    </div>
+                    <div class="bg-white/70 backdrop-blur-lg rounded-2xl p-4 card-hover border border-white/20 shadow-lg">
+                        <div class="text-2xl font-bold mb-1 text-primary">50W+</div>
+                        <p class="text-text-muted text-sm">浏览量</p>
+                    </div>
+                    <div class="bg-white/70 backdrop-blur-lg rounded-2xl p-4 card-hover border border-white/20 shadow-lg">
+                        <div class="text-2xl font-bold mb-1 text-primary">2.7W+</div>
+                        <p class="text-text-muted text-sm">获赞</p>
+                    </div>
+                    <div class="bg-white/70 backdrop-blur-lg rounded-2xl p-4 card-hover border border-white/20 shadow-lg">
+                        <div class="text-2xl font-bold mb-1 text-primary">95</div>
+                        <p class="text-text-muted text-sm">单视频最高涨粉</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 教育与技能 -->
+    <section id="education" class="py-24">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <!-- 教育经历 -->
+                <div class="reveal">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-8">教育经历</h2>
+                    <div class="bg-white rounded-2xl p-6 card-hover">
+                        <div class="flex items-start gap-4 mb-4">
+                            <div class="w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center flex-shrink-0">
+                                <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z"></path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold mb-1">长春理工大学</h3>
+                                <p class="text-text-muted text-sm">网络与新媒体 · 本科</p>
+                                <p class="text-text-muted text-sm">2022.09 – 2026.06</p>
+                            </div>
+                        </div>
+                        <div class="pt-4 border-t border-gray-100">
+                            <p class="text-text-muted text-sm">主修：新媒体产品运营、网络传播、摄影基础、电脑图文设计等</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 技能证书 -->
+                <div class="reveal">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-8">技能证书</h2>
+                    <div class="bg-white rounded-2xl p-6 card-hover">
+                        <h3 class="text-lg font-semibold mb-4">专业能力</h3>
+                        <div class="space-y-3 mb-6">
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="text-sm">产品PRD</span>
+                                    <span class="text-sm text-text-muted">90%</span>
+                                </div>
+                                <div class="h-2 bg-gray-100 rounded-full overflow-hidden">
+                                    <div class="h-full bg-primary rounded-full" style="width: 90%"></div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="text-sm">新媒体运营</span>
+                                    <span class="text-sm text-text-muted">95%</span>
+                                </div>
+                                <div class="h-2 bg-gray-100 rounded-full overflow-hidden">
+                                    <div class="h-full bg-primary rounded-full" style="width: 95%"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h3 class="text-lg font-semibold mb-4">工具&语言</h3>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="skill-tag">Figma</span>
+                            <span class="skill-tag">Photoshop</span>
+                            <span class="skill-tag">Premiere</span>
+                            <span class="skill-tag">剪映</span>
+                            <span class="skill-tag">豆包</span>
+                            <span class="skill-tag">CET-4</span>
+                        </div>
+
+                        <h3 class="text-lg font-semibold mb-4">其他</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="skill-tag">中共预备党员</span>
+                            <span class="skill-tag">校园工作经验</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系我 -->
+    <section id="contact" class="py-24 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto">
+                <!-- 上半部分：个人小记兴趣/技能标签区 -->
+                <div class="mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center reveal">个人小记</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 reveal">
+                        <!-- 卡片1：健身 -->
+                        <div class="bg-white rounded-2xl p-6 card-hover">
+                            <div class="w-12 h-12 flex items-center justify-center mb-4">
+                                <svg class="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                            </div>
+                            <h3 class="text-lg font-semibold mb-2">健身</h3>
+                            <p class="text-text-muted text-sm">定期力量与有氧训练，保持稳定运动习惯</p>
+                        </div>
+
+                        <!-- 卡片2：攀岩 -->
+                        <div class="bg-white rounded-2xl p-6 card-hover">
+                            <div class="w-12 h-12 flex items-center justify-center mb-4">
+                                <svg class="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path>
+                                </svg>
+                            </div>
+                            <h3 class="text-lg font-semibold mb-2">攀岩</h3>
+                            <p class="text-text-muted text-sm">室内攀岩爱好者，挑战身体控制与专注力</p>
+                        </div>
+
+                        <!-- 卡片3：短视频创作 -->
+                        <div class="bg-white rounded-2xl p-6 card-hover">
+                            <div class="w-12 h-12 flex items-center justify-center mb-4">
+                                <svg class="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                                </svg>
+                            </div>
+                            <h3 class="text-lg font-semibold mb-2">短视频创作</h3>
+                            <p class="text-text-muted text-sm">持续产出大学生活纪录类视频内容</p>
+                        </div>
+
+                        <!-- 卡片4：Vibe Coding -->
+                        <div class="bg-white rounded-2xl p-6 card-hover">
+                            <div class="w-12 h-12 flex items-center justify-center mb-4">
+                                <svg class="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+                                </svg>
+                            </div>
+                            <h3 class="text-lg font-semibold mb-2">Vibe Coding</h3>
+                            <p class="text-text-muted text-sm">独立制作工具类小程序，打造效率助手</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 下半部分：保持联系 -->
+                <div class="text-center mb-12 reveal">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">保持联系</h2>
+                    <p class="text-text-muted">期待与你交流想法、项目，或任何有趣的事。</p>
+                </div>
+
+                <div class="text-center mb-12 reveal">
+                    <div class="flex flex-wrap justify-center gap-6 mb-8">
+                        <div class="flex items-center gap-2">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                            </svg>
+                            <span>464501911@qq.com</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                            </svg>
+                            <span>+86 132-4403-9739</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            </svg>
+                            <span>微信：WJX0528111</span>
+                        </div>
+                    </div>
+
+                    <!-- 按钮区 -->
+                    <div class="flex flex-wrap justify-center gap-4">
+                        <a href="mailto:464501911@qq.com" class="px-6 py-3 btn-primary rounded-full transition-all flex items-center gap-2 text-sm">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                            </svg>
+                            发送邮件
+                        </a>
+                        <a href="https://www.kdocs.cn/l/cvs2DM0PG47a" target="_blank" class="px-6 py-3 btn-outline rounded-full transition-all flex items-center gap-2 text-sm">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                            </svg>
+                            简历预览
+                        </a>
+                        <a href="https://xhslink.com/m/8R4MEjoFuWQ" target="_blank" class="px-6 py-3 btn-outline rounded-full transition-all flex items-center gap-2 text-sm">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
+                            </svg>
+                            小红书
+                        </a>
+                        <a href="https://v.douyin.com/yEcau2-0kkc/" target="_blank" class="px-6 py-3 btn-outline rounded-full transition-all flex items-center gap-2 text-sm">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M9.75 9.75c0 .414-.168.75-.375.75S9 10.164 9 9.75 9.168 9 9.375 9s.375.336.375.75zm-.375 0h.008v.015h-.008V9.75zm5.625 0c0 .414-.168.75-.375.75s-.375-.336-.375-.75.168-.75.375-.75.375.336.375.75zm-.375 0h.008v.015h-.008V9.75z"></path>
+                            </svg>
+                            抖音
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="py-12 bg-white border-t border-gray-100">
+        <div class="container mx-auto px-6 text-center">
+            <p class="text-text-muted mb-4">© 2026 王佳欣 - 个人简历</p>
+            <p class="text-text-muted text-sm">Built with HTML · Tailwind CSS · JavaScript</p>
+            <div class="flex justify-center gap-6 mt-4">
+                <a href="#" class="text-text-muted hover:text-primary transition-colors text-sm">微信</a>
+                <a href="#" class="text-text-muted hover:text-primary transition-colors text-sm">微博</a>
+                <a href="#" class="text-text-muted hover:text-primary transition-colors text-sm">小红书</a>
+                <a href="#" class="text-text-muted hover:text-primary transition-colors text-sm">邮箱</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 滚动动画
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => {
+            observer.observe(el);
+        });
+
+        // 展开/收起功能
+        function toggleExpand(id) {
+            const content = document.getElementById(id);
+            const isExpanded = content.classList.contains('expanded');
+
+            content.classList.toggle('expanded');
+
+            const arrow = document.getElementById(id.replace('-details', '') + '-arrow');
+            if (arrow) {
+                arrow.style.transform = isExpanded ? 'rotate(0deg)' : 'rotate(180deg)';
+            }
+        }
+
+        // 项目详情展开/收起
+        function toggleProjectExpand(id) {
+            const content = document.getElementById(id);
+            const isExpanded = content.classList.contains('expanded');
+
+            content.classList.toggle('expanded');
+
+            const arrow = document.getElementById(id.replace('-details', '') + '-arrow');
+            if (arrow) {
+                arrow.style.transform = isExpanded ? 'rotate(0deg)' : 'rotate(180deg)';
+            }
+
+            // 平滑滚动到展开的内容
+            if (!isExpanded) {
+                content.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+
+        // 平滑滚动到指定区域
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+
+        // 画廊轮播功能
+        let galleryState = {
+            'miniprogram-gallery': { currentIndex: 0, totalCards: 14 }
+        };
+
+        function scrollGallery(galleryId, direction) {
+            const gallery = document.getElementById(galleryId);
+            if (!gallery) return;
+
+            const state = galleryState[galleryId];
+            const cards = gallery.querySelectorAll('.gallery-card');
+            const totalCards = cards.length;
+            
+            // 更新索引
+            state.currentIndex = (state.currentIndex + direction + totalCards) % totalCards;
+            
+            // 计算滚动位置
+            const cardWidth = cards[0].offsetWidth;
+            gallery.style.transform = `translateX(-${state.currentIndex * cardWidth}px)`;
+            
+            // 更新指示器
+            updateGalleryIndicators(galleryId);
+        }
+
+        function updateGalleryIndicators(galleryId) {
+            const state = galleryState[galleryId];
+            const counter = document.getElementById(galleryId + '-counter');
+            if (counter) {
+                counter.textContent = `${state.currentIndex + 1} / ${state.totalCards}`;
+            }
+            
+            // 更新小圆点
+            const dotsContainer = document.getElementById(galleryId + '-dots');
+            if (dotsContainer) {
+                const dots = dotsContainer.querySelectorAll('.gallery-dot');
+                dots.forEach((dot, index) => {
+                    if (index === Math.floor(state.currentIndex / 3)) {
+                        dot.classList.remove('bg-gray-300');
+                        dot.classList.add('bg-primary');
+                    } else {
+                        dot.classList.remove('bg-primary');
+                        dot.classList.add('bg-gray-300');
+                    }
+                });
+            }
+        }
+
+        // 初始化画廊指示器
+        function initializeGalleryDots() {
+            const dotsContainer = document.getElementById('miniprogram-gallery-dots');
+            if (dotsContainer && dotsContainer.children.length === 0) {
+                const totalDots = Math.ceil(15 / 3); // 每组3张卡片
+                for (let i = 0; i < totalDots; i++) {
+                    const dot = document.createElement('span');
+                    dot.className = `gallery-dot w-2 h-2 rounded-full ${i === 0 ? 'bg-primary' : 'bg-gray-300'} cursor-pointer`;
+                    dot.dataset.index = i;
+                    dot.onclick = () => goToGalleryPage('miniprogram-gallery', i);
+                    dotsContainer.appendChild(dot);
+                }
+            }
+        }
+
+        function goToGalleryPage(galleryId, pageIndex) {
+            const state = galleryState[galleryId];
+            const gallery = document.getElementById(galleryId);
+            if (!gallery) return;
+
+            state.currentIndex = pageIndex * 3;
+            const cards = gallery.querySelectorAll('.gallery-card');
+            const cardWidth = cards[0].offsetWidth;
+            gallery.style.transform = `translateX(-${state.currentIndex * cardWidth}px)`;
+            updateGalleryIndicators(galleryId);
+        }
+
+        // 页面加载完成后初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeGalleryDots();
+        });
+
+        // 导航栏激活状态
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-link');
+
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').substring(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
